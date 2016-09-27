@@ -15,14 +15,14 @@ namespace LabASP1.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Esta aplicacion es una prueba del laboratorio para el curso de Ingenieria de Sistemas.";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Mejor no nos contacte, esto solamente es una prueba.";
 
             return View();
         }

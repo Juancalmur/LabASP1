@@ -27,5 +27,5 @@ create table Cuenta (
 );
 
 insert into Cliente values ('Julian', 'Calvo', 'Murillo', 'bla@gmail.com', 'allapadentro', '123456');
-INSERT INTO Telefono VALUES('165484', '123456');
-INSERT INTO Cuenta VALUES('321685', 'ahorro', '123456');
+insert into Telefono values('165484', '123456');
+insert into Cuenta values('321685', 'ahorro', '123456');

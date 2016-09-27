@@ -1,0 +1,73 @@
+﻿@model LabASP1.Models.ModeloIntermedio
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Detalles</h2>
+
+<div class="col-md-10">
+    <label class="control-label col-md-2">Nombre:</label>
+    <span class="col-md-10">
+        @Html.DisplayFor(modelItem => Model.listaClientes.ElementAt(0).nombre)
+    </span>
+</div>
+<div class="col-md-10">
+    <label class="control-label col-md-2">Primer apellido:</label>
+    <span class="col-md-10">
+        @Html.DisplayFor(modelItem => Model.listaClientes.ElementAt(0).apellido1)
+    </span>
+</div>
+<div class="col-md-10">
+    <label class="control-label col-md-2">Segundo apellido:</label>
+    <span class="col-md-10">
+        @Html.DisplayFor(modelItem => Model.listaClientes.ElementAt(0).apellido2)
+    </span>
+</div>
+<div class="col-md-10">
+    <label class="control-label col-md-2">Correo:</label>
+    <span class="col-md-10">
+        @Html.DisplayFor(modelItem => Model.listaClientes.ElementAt(0).correo)
+    </span>
+</div>
+<div class="col-md-10">
+    <label class="control-label col-md-2">Direccion:</label>
+    <span class="col-md-10">
+        @Html.DisplayFor(modelItem => Model.listaClientes.ElementAt(0).direccion)
+    </span>
+</div>
+<div class="col-md-10">
+    <label class="control-label col-md-2">Cedula:</label>
+    <span class="col-md-10">
+        @Html.DisplayFor(modelItem => Model.listaClientes.ElementAt(0).cedula)
+    </span>
+</div>
+<div class="col-md-10">
+    <label class="control-label col-md-2">Telefonos:</label>
+    <span class="col-md-10">
+        @for (int j = 0; j < Model.listaTelefonos.Count; j++)
+        {
+            @Html.DisplayFor(modelItem => Model.listaTelefonos.ElementAt(j).numero)
+            @Html.Raw("<br>")
+        }
+    </span>
+</div>
+<div class="col-md-10">
+    <label class="control-label col-md-2">Cuentas:</label>
+    <span class="col-md-10">
+        @for (int j = 0; j < Model.listaCuentas.Count; j++)
+        {
+            @Html.Raw("Tipo: ")
+            @Html.DisplayFor(modelItem => Model.listaCuentas.ElementAt(j).tipo)
+            @Html.Raw(" Número: ")
+            @Html.DisplayFor(modelItem => Model.listaCuentas.ElementAt(j).numero)
+            @Html.Raw("<br>")
+        }
+    </span>
+</div>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

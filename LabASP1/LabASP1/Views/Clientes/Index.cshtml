@@ -2,7 +2,7 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2>Index</h2>
+<h2>Indice</h2>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -18,7 +18,7 @@
             Apellido 2
         </th>
         <th>
-            Cuenta
+            Cuentas
         </th>
         <th>
             Telefonos
@@ -60,9 +60,9 @@
             <td></td>
 
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = Model.listaClientes.ElementAt(i).cedula }) |
-                @Html.ActionLink("Details", "Details", new { id = Model.listaClientes.ElementAt(i).cedula }) |
-                @Html.ActionLink("Delete", "Delete", new { id = Model.listaClientes.ElementAt(i).cedula })
+                @Html.ActionLink("Editar", "Edit", new { id = Model.listaClientes.ElementAt(i).cedula }) |
+                @Html.ActionLink("Detalles", "Details", new { id = Model.listaClientes.ElementAt(i).cedula }) |
+                @Html.ActionLink("Borrar", "Delete", new { id = Model.listaClientes.ElementAt(i).cedula })
             </td>
         </tr>
     }
