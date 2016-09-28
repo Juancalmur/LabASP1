@@ -119,38 +119,38 @@ namespace LabASP1.Controllers
         {
             if (ModelState.IsValid)
             {
-                Cliente cliente = baseDatos.Cliente.Find(id);
-                modelo.modeloCliente.cedula = id;
-                baseDatos.Entry(cliente).CurrentValues.SetValues(modelo.modeloCliente);
+                baseDatos.Cliente.Attach(modelo.modeloCliente);
+                baseDatos.Entry(modelo.modeloCliente).State = System.Data.Entity.EntityState.Modified;
                 baseDatos.SaveChanges();
-                List<Telefono> telefonos = baseDatos.Telefono.Where(a => a.cedula == cliente.cedula).ToList();
-                List<Cuenta> cuentas = baseDatos.Cuenta.Where(a => a.cedula == cliente.cedula).ToList();
-                baseDatos.SaveChanges();
-
                 if (modelo.modeloTelefono.numero != null)
                 {
                     modelo.modeloTelefono.cedula = modelo.modeloCliente.cedula;
-                    baseDatos.Telefono.Add(modelo.modeloTelefono);
+                    baseDatos.Entry(modelo.modeloTelefono).State = System.Data.Entity.EntityState.Modified;
+                    baseDatos.SaveChanges();
                 }
                 if (modelo.modeloTelefono2.numero != null)
                 {
                     modelo.modeloTelefono2.cedula = modelo.modeloCliente.cedula;
-                    baseDatos.Telefono.Add(modelo.modeloTelefono2);
+                    baseDatos.Entry(modelo.modeloTelefono2).State = System.Data.Entity.EntityState.Modified;
+                    baseDatos.SaveChanges();
                 }
                 if (modelo.modeloCuenta.numero != null)
                 {
                     modelo.modeloCuenta.cedula = modelo.modeloCliente.cedula;
-                    baseDatos.Cuenta.Add(modelo.modeloCuenta);
+                    baseDatos.Entry(modelo.modeloCuenta).State = System.Data.Entity.EntityState.Modified;
+                    baseDatos.SaveChanges();
                 }
                 if (modelo.modeloCuenta2.numero != null)
                 {
                     modelo.modeloCuenta2.cedula = modelo.modeloCliente.cedula;
-                    baseDatos.Cuenta.Add(modelo.modeloCuenta2);
+                    baseDatos.Entry(modelo.modeloCuenta2).State = System.Data.Entity.EntityState.Modified;
+                    baseDatos.SaveChanges();
                 }
                 if (modelo.modeloCuenta3.numero != null)
                 {
                     modelo.modeloCuenta3.cedula = modelo.modeloCliente.cedula;
-                    baseDatos.Cuenta.Add(modelo.modeloCuenta3);
+                    baseDatos.Entry(modelo.modeloCuenta3).State = System.Data.Entity.EntityState.Modified;
+                    baseDatos.SaveChanges();
                 }
                 baseDatos.SaveChanges();
                 return RedirectToAction("Index");
