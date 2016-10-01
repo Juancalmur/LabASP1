@@ -162,13 +162,33 @@ namespace LabASP1.Controllers
             }
         }
 
-        [HttpPost]
-        public Cliente Delete(string id)
+        public ActionResult Delete(string id)
         {
             Cliente cliente = baseDatos.Cliente.Find(id);
+
+            List<Telefono> telefonos = baseDatos.Telefono.Where(a => a.cedula == cliente.cedula).ToList();
+            List<Cuenta> cuentas = baseDatos.Cuenta.Where(a => a.cedula == cliente.cedula).ToList();
+
+            ModeloIntermedio modelo = new ModeloIntermedio();
+
+            modelo.listaClientes = new List<Cliente>();
+            modelo.listaClientes.Add(cliente);
+            modelo.listaTelefonos = telefonos;
+            modelo.listaCuentas = cuentas;
+
+            return View(modelo);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(string id)
+        {
+            Cliente cliente = baseDatos.Cliente.Find(id);
+            //baseDatos.Telefono.Remove(cliente);
+            //baseDatos.Cuenta.Remove(cliente);
             baseDatos.Cliente.Remove(cliente);
             baseDatos.SaveChanges();
-            return cliente;
+            return RedirectToAction("Index");
         }
 
     }
